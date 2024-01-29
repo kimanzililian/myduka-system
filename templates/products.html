@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+      body {
+        background-color: #f8f9fa; /* Light gray background color */
+      }
+
+      /* Navbar styling */
+      .navbar {
+        background-color: #007bff; /* Navbar background color */
+        padding: 20px;
+      }
+
+      .navbar-brand,
+      .nav-link {
+        color: #1d0ef1 !important; /* Text color for navbar links */
+        
+      }
+      body {
+                background-color: hsl(240, 23%, 97%); /* Light gray background color */
+                margin: 0; /* Remove default body margin */
+                font-family: 'Arial', sans-serif; /* Set a suitable font-family */
+            }
+    
+            .navbar {
+                background-color: #007bff; /* Navbar background color */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Navbar box shadow */
+            }
+    
+            .navbar-link {
+                color: hsl(249, 94%, 48%) !important; /* Navbar brand text color */
+                font-weight: bold;
+                font-size: 1.5rem; /* Increase font size */
+            }
+    
+            .navbar-toggler-icon {
+                background-color: hsla(253, 94%, 51%, 0.884); /* Navbar toggle icon color */
+            }
+    
+            .navbar-nav .nav-item {
+                margin-right: 10px;
+            }
+    
+            .nav-link {
+                color: hsl(241, 92%, 50%) !important; /* Navbar links text color */
+                font-weight: bold;
+                transition: color 0.3s ease; /* Smooth color transition */
+            }
+    
+            .nav-link:hover {
+                text-decoration: none; /* Remove underline on hover */
+                color: hsl(244, 92%, 51%); /* Change color on hover */
+            }
+    
+            .container-fluid {
+                padding: 0 15px; /* Add some padding to the container */
+            }
+
+      /* Form styling */
+      form {
+        margin-top: 20px;
+        padding: 20px;
+        background-color: #ffffff; /* Form background color */
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for form */
+      }
+
+      label {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 15px;
+        box-sizing: border-box;
+      }
+
+      /* Table styling */
+      table {
+        margin-top: 20px;
+        width: 100%;
+        border: 1px solid #dee2e6; /* Table border color */
+        border-radius: 8px;
+        overflow: hidden; /* Hide table overflow */
+      }
+
+      th, td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #dee2e6; /* Table row border color */
+      }
+
+      thead {
+        background-color: #007bff; /* Table header background color */
+        color: #ffffff; /* Table header text color */
+      }
+    </style>
+   
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-link active" href="/">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/dashboard">DASHBOARD</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/register">register</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/login">login</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/products">products</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/sales">sales</a>
+              </li>
+              
+              
+              <li class="nav-item">
+                <a class="nav-link disabled" aria-disabled="true"></a>
+              </li>
+            </ul>
+            
+          </div>
+        </div>
+      </nav>
+    <form action="/add_products" method="post">
+        <label for="name">name</label>
+        <input type="text"Name="name">
+        <label for="buying_price">buying_price</label>
+        <input type="text"name="buying_price">
+        <label for="selling_price">selling_price</label>
+        <input type="text" name="selling_price">
+        <label for="stock_quantity">stock_quantity</label>
+        <input type="text"name="stock_quantity">
+        <input type="submit">
+    </form>
+
+        <table style="border: 1;padding: 10px;">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>buying_price</th>
+                    <th>selling_price</th>
+                    <th>stock_quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for prod in products %}
+                <tr>
+                    <td>{{prod[0]}}</td>
+                    <td>{{prod[1]}}</td>
+                    <td>{{prod[2]}}</td>
+                    <td>{{prod[3]}}</td>
+                    <td>{{prod[4]}}</td>
+                    
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+    
+</body>
+</html>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+  </body>
+</html>
